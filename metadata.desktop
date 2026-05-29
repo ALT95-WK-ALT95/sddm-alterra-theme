@@ -1,0 +1,10 @@
+[SddmGreeterTheme]
+Name=sddm-alterra-theme
+Description=SDDM theme inspired by the Subnautica PDA interface and Alterra Corporation aesthetic.
+License=MIT
+Type=sddm-theme
+Version=0.1
+MainScript=Main.qml
+Theme-Id=sddm-alterra-theme
+Theme-API=2.0
+Screenshot=previews/preview.png
