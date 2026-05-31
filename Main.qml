@@ -64,7 +64,7 @@ Item {
         }
     }
 
-
+    // ── Reloj ────────────────────────────────────────────────
     Rectangle {
         id: pdaClockContainer
         anchors {
@@ -111,7 +111,7 @@ Item {
         }
     }
 
-
+    // ── Botones sistema ──────────────────────────────────────
     Row {
         id: pdaSystemButtons
         anchors {
@@ -150,7 +150,7 @@ Item {
         }
     }
 
-
+    // ── Clima ────────────────────────────────────────────────
     Text {
         anchors {
             top: parent.top
@@ -163,7 +163,7 @@ Item {
         opacity: 0.7
     }
 
-
+    // ── Selector de sesión ───────────────────────────────────
     Image {
         id: sessionGearIcon
         anchors {
@@ -224,7 +224,7 @@ Item {
         }
     }
 
-
+    // ── Panel login ──────────────────────────────────────────
     Rectangle {
         id: loginContainer
         anchors {
@@ -260,6 +260,7 @@ Item {
         }
     }
 
+    // ── Timer delay login ────────────────────────────────────
     Timer {
         id: loginDelay
         interval: 8000
@@ -268,6 +269,13 @@ Item {
         onTriggered: {
             loginContainer.visible = true
             loginContainer.opacity = 1
+            if (loginLoader.item) {
+                if (loginLoader.item.hasUser) {
+                    loginLoader.item.passwordFocus = true
+                } else {
+                    loginLoader.item.userFocus = true
+                }
+            }
         }
     }
 }

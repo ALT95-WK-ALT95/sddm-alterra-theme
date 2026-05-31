@@ -8,15 +8,45 @@ Item {
     property int selectedSession: 0
     property bool hasUser: false
     property string userName: ""
+    property alias passwordFocus: passwordInput.focus
+    property alias userFocus: userInput.focus
+
+    onVisibleChanged: {
+        if (visible) {
+            focusTimer.start()
+        }
+    }
+
+    Timer {
+        id: focusTimer
+        interval: 200
+        repeat: false
+        onTriggered: {
+            if (hasUser) {
+                passwordInput.forceActiveFocus()
+            } else {
+                userInput.forceActiveFocus()
+            }
+        }
+    }
 
     Component.onCompleted: {
-        var last = sddm.lastUser || ""
-        hasUser = (last !== "")
-        userName = last
-        if (hasUser) {
-            passwordInput.focus = true
-        } else {
-            userInput.focus = true
+        initTimer.start()
+    }
+
+    Timer {
+        id: initTimer
+        interval: 100
+        repeat: false
+        onTriggered: {
+            var xhr = new XMLHttpRequest()
+            xhr.open("GET", "file:///var/lib/sddm/state.conf", false)
+            xhr.send()
+            var text = xhr.responseText
+            var match = text.match(/User=(\S+)/)
+            var last = match ? match[1] : ""
+            hasUser = (last !== "")
+            userName = last
         }
     }
 
@@ -41,7 +71,7 @@ Item {
         function onLoginFailed() {
             showError("Access Denied - Invalid Key")
             passwordInput.text  = ""
-            passwordInput.focus = true
+            passwordInput.forceActiveFocus()
         }
     }
 
@@ -102,7 +132,7 @@ Item {
         font { family: "Fira Mono"; pointSize: 10; bold: true }
         visible: !hasUser
         KeyNavigation.tab: passwordInput
-        onAccepted: passwordInput.focus = true
+        onAccepted: passwordInput.forceActiveFocus()
 
         Rectangle {
             x: 0
