@@ -20,7 +20,7 @@ Tema de SDDM inspirado en la interfaz de la PDA de Subnautica y la estética de 
 
 1. Clona este repositorio:
 ```bash
-   git clone https://github.com/tuusuario/sddm-alterra-theme
+   git clone https://github.com/ALT95-WK-ALT95/sddm-alterra-theme
 ```
 2. Copia la carpeta al directorio de temas:
 ```bash
