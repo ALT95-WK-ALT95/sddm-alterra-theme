@@ -8,7 +8,7 @@ Tema de SDDM inspirado en la interfaz de la PDA de Subnautica y la estética de 
 
 ## Capturas de pantalla
 
-![Previews](previews/previews.png)
+![Previews](previews/)
 
 ## Requisitos
 
