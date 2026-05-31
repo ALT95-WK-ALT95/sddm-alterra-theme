@@ -1,5 +1,5 @@
 #SDDM Alterra Theme
-> ⚠️ Version 0.1 — Work in progress. Tested on Arch Linux with Hyprland.
+> Version 0.1 — Work in progress. Tested on Arch Linux with Hyprland.
 
 Tema de SDDM inspirado en la interfaz de la PDA de Subnautica y la estética de la Corporación Alterra.
 
@@ -12,7 +12,7 @@ Tema de SDDM inspirado en la interfaz de la PDA de Subnautica y la estética de 
 
 ## Requisitos
 
-* SDDM con soporte Qt5 Multimedia (`qt5-multimedia` en Arch).
+* SDDM con soporte Qt5 Multimedia (`qt5-multimedia`).
 * GStreamer (`gst-libav`, `gst-plugins-good`, `gst-plugins-bad`, `gst-plugins-ugly`).
 * PipeWire o PulseAudio (para el sonido de login).
 
@@ -41,7 +41,7 @@ Puedes reemplazar los archivos de vídeo y audio dentro de Assets/videos/ y Asse
 
 Aviso sobre derechos de autor
 
-Los archivos de audio (Assets/cyclops_welcome.wav) y los vídeos (Assets/videos/alterra_bienvenida.mp4, etc.) son propiedad de Unknown Worlds Entertainment y se incluyen aquí únicamente como fan art, sin intención de lucro. Estos archivos no están cubiertos por la licencia MIT de este repositorio.
+Los archivos de los vídeos (Assets/videos/alterra_bienvenida.mp4, etc.) son propiedad de Unknown Worlds Entertainment y se incluyen aquí únicamente como fan art, sin intención de lucro. Estos archivos no están cubiertos por la licencia MIT de este repositorio.
 
 Si eres el titular de los derechos y deseas que los retire, por favor abre un issue y los eliminaré de inmediato.
 
