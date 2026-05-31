@@ -1,4 +1,4 @@
-#SDDM Alterra Theme
+# SDDM Alterra Theme
 > Version 0.1 — Work in progress. Tested on Arch Linux with Hyprland.
 
 Tema de SDDM inspirado en la interfaz de la PDA de Subnautica y la estética de la Corporación Alterra.
