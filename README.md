@@ -13,7 +13,7 @@ Tema de SDDM inspirado en la interfaz de la PDA de Subnautica y la estética de 
 ## Requisitos
 
 * SDDM con soporte Qt5 Multimedia (`qt5-multimedia`).
-* GStreamer (`gst-libav`, `gst-plugins-good`, `gst-plugins-bad`, `gst-plugins-ugly`).
+* GStreamer (`gst-libav`, `gst-plugins-base`, `gst-plugins-good`, `gst-plugins-bad`, `gst-plugins-ugly`).
 * PipeWire o PulseAudio (para el sonido de login).
 
 ## Instalación
