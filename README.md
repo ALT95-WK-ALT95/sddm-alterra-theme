@@ -1,57 +1,58 @@
 # SDDM Alterra Theme
 > Version 0.1 — Work in progress. Tested on Arch Linux with Hyprland.
 
-Tema de SDDM inspirado en la interfaz de la PDA de Subnautica y la estética de la Corporación Alterra.
+An SDDM theme inspired by the Subnautica PDA interface and the Alterra Corporation aesthetic.
 
-* Secuencia de arranque animada (carga del PDA) con sonido.
-* Pantalla de login con logo de Alterra girando en 3D sobre el fondo del PDA.
+* Animated boot sequence (PDA loading screen) with sound.
+* Login screen with a 3D rotating Alterra logo over the PDA background.
 
-## Capturas de pantalla
+## Screenshots
 
 ![Previews](previews/)
 
-## Requisitos
+## Requirements
 
-* SDDM con soporte Qt5 Multimedia (`qt5-multimedia`).
-* `qt5-wayland` (necesario para el renderizado en Wayland, especialmente con GPUs Intel).
+* SDDM with Qt5 Multimedia support (`qt5-multimedia`).
+* `qt5-wayland` (needed for Wayland rendering, especially on Intel GPUs).
 * GStreamer (`gst-libav`, `gst-plugins-base`, `gst-plugins-good`, `gst-plugins-bad`, `gst-plugins-ugly`).
-* PipeWire o PulseAudio (para el sonido de login).
+* PipeWire or PulseAudio (for the login sound).
 
-## Instalación
+## Installation
 
-1. Clona este repositorio:
+1. Clone this repository:
 ```bash
    git clone https://github.com/ALT95-WK-ALT95/sddm-alterra-theme
 ```
-2. Copia la carpeta al directorio de temas:
+2. Copy the folder to the themes directory:
 ```bash
    sudo cp -r sddm-alterra-theme /usr/share/sddm/themes/
 ```
-3. Edita `/etc/sddm.conf`:
+3. Edit `/etc/sddm.conf`:
 ```ini
    [Theme]
    Current=sddm-alterra-theme
 ```
-4. Reinicia SDDM:
+4. Restart SDDM:
 ```bash
    sudo systemctl restart sddm
 ```
 
-## Solución de problemas
+## Troubleshooting
 
-### El audio funciona pero la pantalla se queda en negro
-El problema puede ser debido a que:
- GStreamer elige un sink de vídeo roto (común en NVIDIA + Wayland)
+### Audio works but the screen stays black
 
-En drivers NVIDIA bajo Wayland, QtMultimedia suele elegir glimagesink, que depende de OpenGL y puede fallar silenciosamente. Fuerza el uso de waylandsink.
+The problem may be caused by:
+GStreamer picking a broken video sink (common on NVIDIA + Wayland).
 
-Edita /etc/sddm.conf y añade bajo la sección [General] (créala si no existe):
+On NVIDIA drivers under Wayland, QtMultimedia often picks `glimagesink`, which relies on OpenGL and can fail silently. Force it to use `waylandsink`.
+
+Edit `/etc/sddm.conf` and add under the `[General]` section (create it if it doesn't exist):
 
 ```ini
 [General]
 GreeterEnvironment=QT_GSTREAMER_VIDEO_SINK=waylandsink
 ```
-Reinicia SDDM:
+Restart SDDM:
 
 ```bash
 sudo systemctl restart sddm
@@ -59,21 +60,20 @@ sudo systemctl restart sddm
  
  
  
- ## Personalización
+## Customization
 
-Puedes reemplazar los archivos de vídeo y audio dentro de Assets/videos/ y Assets/ manteniendo los mismos nombres, o editar las rutas en Main.qml y Login.qml.
+You can replace the video and audio files inside `Assets/videos/` and `Assets/` as long as you keep the same filenames, or edit the paths in `Main.qml` and `Login.qml`.
 
-Aviso sobre derechos de autor
+## Copyright notice
 
-Los archivos de los vídeos (Assets/videos/alterra_bienvenida.mp4, etc.) son propiedad de Unknown Worlds Entertainment y se incluyen aquí únicamente como fan art, sin intención de lucro. Estos archivos no están cubiertos por la licencia MIT de este repositorio.
+The video files (`Assets/videos/alterra_bienvenida.mp4`, etc.) are property of Unknown Worlds Entertainment and are included here solely as fan art, with no intention of profit. These files are **not covered** by the MIT license of this repository.
 
-Si eres el titular de los derechos y deseas que los retire, por favor abre un issue y los eliminaré de inmediato.
+If you are the rights holder and want them removed, please open an issue and I will delete them immediately.
 
-El código QML, las configuraciones y la estructura del tema son originales y se distribuyen bajo la licencia MIT.
-## Créditos
+The QML code, configurations, and theme structure are original and distributed under the MIT license.
 
-   * Sonidos y ambientación de Subnautica: Unknown Worlds Entertainment.
+## Credits
 
-   * Tema base SDDM: sddm-video-music-theme de KHZ-INTL (licencia MIT).
-
-   * Tema creado por _WK_.
+* Subnautica sounds and atmosphere: Unknown Worlds Entertainment.
+* Base SDDM theme: [sddm-video-music-theme](https://github.com/KHZ-INTL/sddm-video-music-theme) by KHZ-INTL (MIT license).
+* Theme created by _WK_.
