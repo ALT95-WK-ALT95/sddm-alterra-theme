@@ -13,6 +13,7 @@ Tema de SDDM inspirado en la interfaz de la PDA de Subnautica y la estética de 
 ## Requisitos
 
 * SDDM con soporte Qt5 Multimedia (`qt5-multimedia`).
+* `qt5-wayland` (necesario para el renderizado en Wayland, especialmente con GPUs Intel).
 * GStreamer (`gst-libav`, `gst-plugins-base`, `gst-plugins-good`, `gst-plugins-bad`, `gst-plugins-ugly`).
 * PipeWire o PulseAudio (para el sonido de login).
 
@@ -35,7 +36,30 @@ Tema de SDDM inspirado en la interfaz de la PDA de Subnautica y la estética de 
 ```bash
    sudo systemctl restart sddm
 ```
- Personalización
+
+## Solución de problemas
+
+### El audio funciona pero la pantalla se queda en negro
+El problema puede ser debido a que:
+ GStreamer elige un sink de vídeo roto (común en NVIDIA + Wayland)
+
+En drivers NVIDIA bajo Wayland, QtMultimedia suele elegir glimagesink, que depende de OpenGL y puede fallar silenciosamente. Fuerza el uso de waylandsink.
+
+Edita /etc/sddm.conf y añade bajo la sección [General] (créala si no existe):
+
+```ini
+[General]
+GreeterEnvironment=QT_GSTREAMER_VIDEO_SINK=waylandsink
+```
+Reinicia SDDM:
+
+```bash
+sudo systemctl restart sddm
+ ```
+ 
+ 
+ 
+ ## Personalización
 
 Puedes reemplazar los archivos de vídeo y audio dentro de Assets/videos/ y Assets/ manteniendo los mismos nombres, o editar las rutas en Main.qml y Login.qml.
 
@@ -46,10 +70,10 @@ Los archivos de los vídeos (Assets/videos/alterra_bienvenida.mp4, etc.) son pro
 Si eres el titular de los derechos y deseas que los retire, por favor abre un issue y los eliminaré de inmediato.
 
 El código QML, las configuraciones y la estructura del tema son originales y se distribuyen bajo la licencia MIT.
-Créditos
+## Créditos
 
-    Sonidos y ambientación de Subnautica: Unknown Worlds Entertainment.
+   * Sonidos y ambientación de Subnautica: Unknown Worlds Entertainment.
 
-    Tema base SDDM: sddm-video-music-theme de KHZ-INTL (licencia MIT).
+   * Tema base SDDM: sddm-video-music-theme de KHZ-INTL (licencia MIT).
 
-    Tema creado por _WK_.
+   * Tema creado por _WK_.
